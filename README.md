@@ -26,11 +26,24 @@ npm install -g @angular/cli@1.7.1
 ### 4 - Importar a Aplicação (em https://github.com/start-javascript/sb-admin-material) e executar.
 
 git clone https://github.com/start-javascript/sb-admin-material.git
+
 cd sb-admin-material
 
 ### 5- Criar a Dockerfile (alpine e nginx)
 
-OBS: Escolhi usar a imagem do alpine por ser mais leve que as outras do dockerhub.
+OBS¹: Escolhi usar a imagem do alpine por ser mais leve que as outras do dockerhub.
+
+OBS²: Foi preciso utilizar o comando **sudo npm install --save-dev  --unsafe-perm node-sass** para resolver um problema com a dependência do node-sass.
+
+### 6 - Criar a imagem 
+#### 6.1 - Trocar a tag da imagem: 
+docker tag [IMAGE ID] app/nginx
+
+#### 6.2 - Construir a imagem
+docker build .
+
+### 7 - Criar o Container
+docker run -p 8080:80 app/nginx
 
 ## Referências: 
 
